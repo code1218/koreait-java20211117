@@ -3,7 +3,7 @@ package a15_인터페이스2;
 public class UserController {
 
 	public static void main(String[] args) {
-		int userCount = 10;
+		int userCount = 100;
 		UserService userService = new UserServiceImpl(userCount);
 		userService.createUser();
 		
@@ -11,7 +11,6 @@ public class UserController {
 		userService.printUsers();
 		
 		userService.searchUser();
-		
 	}
 }
 

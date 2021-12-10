@@ -11,6 +11,20 @@ public class UserServiceImpl implements UserService{
 		users = new User[userCount];
 	}
 	
+	public boolean nextOn() {
+		do {
+			System.out.print("계속 정보를 등록하시겠습니까?(y/n)");
+			String continueFlag = in.nextLine();
+			if(continueFlag.equals("n") || continueFlag.equals("N")) {
+				return false;
+			}else if(continueFlag.equals("y") || continueFlag.equals("Y")) {
+				return true;
+			}else {
+				System.out.println("잘못된 명령입니다.");
+			}
+		}while(true);
+	}
+	
 	@Override
 	public void createUser() {
 		boolean loopFlag = true;
@@ -25,19 +39,7 @@ public class UserServiceImpl implements UserService{
 			System.out.print("이메일: ");
 			String email = in.nextLine();
 			
-			do {
-				System.out.print("계속 정보를 등록하시겠습니까?(y/n)");
-				String continueFlag = in.nextLine();
-				if(continueFlag.equals("n") || continueFlag.equals("N")) {
-					loopFlag = false;
-					break;
-				}else if(continueFlag.equals("y") || continueFlag.equals("Y")) {
-					loopFlag = true;
-					break;
-				}else {
-					System.out.println("잘못된 명령입니다.");
-				}
-			}while(true);
+			loopFlag = nextOn();
 			
 			User user = new User();
 			user.setId(id);
@@ -46,7 +48,6 @@ public class UserServiceImpl implements UserService{
 			user.setEmail(email);
 			
 			insertUser(user);
-			
 		}
 		
 	}
