@@ -4,9 +4,11 @@ package a16_기본클래스;
 
 public class ObjectEx{
 	
+	
+	
 	@Override
 	public String toString() {
-		return "안녕하세요. toString입니다.";
+		return super.toString();
 	}
 	
 	@Override
