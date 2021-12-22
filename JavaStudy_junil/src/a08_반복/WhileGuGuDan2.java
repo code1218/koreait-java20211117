@@ -17,10 +17,9 @@ public class WhileGuGuDan2 {
 		int dan = gugudanStart;
 		
 		while(dan < gugudanEnd+1) {
-			if(dan%2 == 0) {
-				dan++;
-				continue;
-			}
+			/*
+			 * if(dan%2 == 0) { dan++; continue; }
+			 */
 			System.out.println(dan + "´Ü");
 			int j = 1;
 			while(j < 10) {
