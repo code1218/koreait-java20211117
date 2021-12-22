@@ -3,10 +3,12 @@ package a22_데이터베이스;
 public class Controller {
 	private Display display;
 	private Input input;
+	private SignupService signupService;
 	
 	public Controller() {
 		display = new Display();
 		input = new Input();
+		signupService = new SignupService();
 	}
 	
 	public boolean mainMenu() {
@@ -18,7 +20,8 @@ public class Controller {
 		cmd = input.cmdInput();
 		
 		if(cmd.equals("1")) {
-			
+			display.signupDisplay();
+			display.signupMessage(signupService.signup());
 		}else if(cmd.equals("2")) {
 			
 		}else if(cmd.equals("q")) {

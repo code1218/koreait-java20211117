@@ -9,7 +9,15 @@ public class Display {
 		System.out.println();
 	}
 	
-	public void signupDisplay(Input input) {
+	public void signupDisplay() {
 		System.out.println("[회원가입]");
+	}
+	
+	public void signupMessage(boolean result) {
+		if(result == true) {
+			System.out.println("회원가입 성공.");
+		}else {
+			System.out.println("회원가입 실패.");
+		}
 	}
 }
