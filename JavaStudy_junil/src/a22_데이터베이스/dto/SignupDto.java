@@ -1,5 +1,6 @@
-package a22_데이터베이스;
+package a22_데이터베이스.dto;
 
+import a22_데이터베이스.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
