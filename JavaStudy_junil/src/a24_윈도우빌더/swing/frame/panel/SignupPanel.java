@@ -10,6 +10,7 @@ public class SignupPanel extends JPanel {
 
 	public SignupPanel(JPanel mainPanel, CardLayout mainCard) {
 		setLayout(null);
+		setSize(1000, 600);
 
 	}
 

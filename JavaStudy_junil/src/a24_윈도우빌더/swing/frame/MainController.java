@@ -43,6 +43,8 @@ public class MainController extends JFrame {
 		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		mainCard = new CardLayout(0, 0);
 		mainPanel.setLayout(mainCard);
+		mainPanel.setSize(1000,600);
+		
 		setContentPane(mainPanel);
 		
 		JPanel welcomPanel = new WelcomPanel(mainPanel, mainCard);
@@ -59,6 +61,9 @@ public class MainController extends JFrame {
 		
 		JPanel accountsPanel = new AccountsPanel(mainPanel, mainCard);
 		mainPanel.add(accountsPanel, "accountsPanel");
+		
+		JPanel panel = new JPanel();
+		mainPanel.add(panel, "name_26744048052600");
 		
 		
 	}

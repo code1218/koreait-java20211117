@@ -10,6 +10,7 @@ public class IndexPanel extends JPanel {
 
 	public IndexPanel(JPanel mainPanel, CardLayout mainCard) {
 		setLayout(null);
+		setSize(1000, 600);
 
 	}
 
