@@ -8,27 +8,36 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import a24_윈도우빌더.service.AuthService;
+import a24_윈도우빌더.session.Principal;
 import a24_윈도우빌더.swing.dto.SigninDto;
 
 public class SigninPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
+	private IndexPanel indexPanel;
+	
 	private JTextField usernameText;
 	private JPasswordField passwordText;
 	private AuthService authService;
+	
+	private Principal principal;
 
 	public SigninPanel(JPanel mainPanel, CardLayout mainCard) {
 		setLayout(null);
 		setSize(1000, 600);
 		
 		authService = new AuthService();
+		
+		principal = Principal.getInstance();
+		indexPanel = IndexPanel.getInstance();
 		
 		JLabel signinTitle = new JLabel("JAVA \uC2A4\uC719 \uC218\uC5C5");
 		signinTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,11 +83,15 @@ public class SigninPanel extends JPanel {
 				int result = authService.signin(signinDto);
 				if(result == 2) {
 					// 로그인 성공
+					JOptionPane.showMessageDialog(null, principal.getUser().getName() + "님 환영합니다.", "로그인 성공", JOptionPane.PLAIN_MESSAGE);
+					indexPanel.getProfileBtn().setText(principal.getUser().getUsername());
+					usernameText.setText("");
+					passwordText.setText("");
 					mainCard.show(mainPanel, "indexPanel");
 				}else if(result == 0) {
-					System.out.println("존재하지 않는 아이디");
+					JOptionPane.showMessageDialog(null, "존재하지 않는 아이디입니다.", "아이디 오류", JOptionPane.ERROR_MESSAGE);
 				}else if(result == 1) {
-					System.out.println("비밀번호가 일치하지 않음");
+					JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.", "비밀번호 오류", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

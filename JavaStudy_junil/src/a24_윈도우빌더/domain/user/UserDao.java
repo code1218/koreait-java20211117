@@ -5,4 +5,6 @@ public interface UserDao {
 	public int checkUsernameByUsername(String username);
 	public int signinByUsernameAndPassword(User user);
 	public User getUserByUsername(String username); 
+	public int updateProfileById(User user);
+	public int updatePasswordById(User user);
 }
