@@ -148,7 +148,7 @@ public class AccountsPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.", "비밀번호 오류", JOptionPane.ERROR_MESSAGE);
 					return;
 				}else {
-					
+					accountsService.updatePassword(passwordText.getText());
 				}
 					
 			}
