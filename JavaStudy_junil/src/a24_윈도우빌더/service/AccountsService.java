@@ -37,4 +37,13 @@ public class AccountsService {
 			return true;
 		}
 	}
+	
+	public boolean deleteUser() {
+		int result = userDao.deleteUserById(principal.getUser().getId());
+		if(result == 1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

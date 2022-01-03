@@ -50,7 +50,8 @@ public class MainController extends JFrame {
 		JPanel welcomPanel = new WelcomPanel(mainPanel, mainCard);
 		mainPanel.add(welcomPanel, "welcomPanel");
 		
-		JPanel signinPanel = new SigninPanel(mainPanel, mainCard);
+		SigninPanel signinPanel = SigninPanel.getInstance();
+		signinPanel.setCardLayout(mainPanel, mainCard);
 		mainPanel.add(signinPanel, "signinPanel");
 		
 		SignupPanel signupPanel = SignupPanel.getInstance();

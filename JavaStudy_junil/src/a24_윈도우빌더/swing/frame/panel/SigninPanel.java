@@ -17,20 +17,25 @@ import javax.swing.SwingConstants;
 import a24_À©µµ¿ìºô´õ.service.AuthService;
 import a24_À©µµ¿ìºô´õ.session.Principal;
 import a24_À©µµ¿ìºô´õ.swing.dto.SigninDto;
+import lombok.Data;
 
+@Data
 public class SigninPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private static SigninPanel instance = new SigninPanel();
 	
 	private IndexPanel indexPanel;
 	
 	private JTextField usernameText;
 	private JPasswordField passwordText;
 	private AuthService authService;
+	private JPanel mainPanel;
+	private CardLayout mainCard;
 	
 	private Principal principal;
 
-	public SigninPanel(JPanel mainPanel, CardLayout mainCard) {
+	private SigninPanel() {
 		setLayout(null);
 		setSize(1000, 600);
 		
@@ -96,8 +101,33 @@ public class SigninPanel extends JPanel {
 			}
 		});
 		signinBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
-		signinBtn.setBounds(222, 244, 115, 40);
+		signinBtn.setBounds(301, 244, 165, 40);
 		signinItems.add(signinBtn);
+		
+		JButton signupBtn = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		signupBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				usernameText.setText("");
+				passwordText.setText("");
+				mainCard.show(mainPanel, "signupPanel");
+			}
+		});
+		signupBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		signupBtn.setBounds(174, 244, 115, 40);
+		signinItems.add(signupBtn);
 
+	}
+	
+	public static SigninPanel getInstance() {
+		if(instance == null) {
+			instance = new SigninPanel();
+		}
+		return instance;
+	}
+	
+	public void setCardLayout(JPanel mainPanel, CardLayout mainCard) {
+		this.mainPanel = mainPanel;
+		this.mainCard = mainCard;
 	}
 }

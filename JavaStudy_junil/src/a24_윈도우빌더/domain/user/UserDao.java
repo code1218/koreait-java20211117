@@ -7,4 +7,5 @@ public interface UserDao {
 	public User getUserByUsername(String username); 
 	public int updateProfileById(User user);
 	public int updatePasswordById(User user);
+	public int deleteUserById(int id);
 }

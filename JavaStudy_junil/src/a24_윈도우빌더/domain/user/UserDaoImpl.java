@@ -170,4 +170,25 @@ public class UserDaoImpl implements UserDao{
 		}
 		return result;
 	}
+	
+	@Override
+	public int deleteUserById(int id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		int result = 0;
+		
+		try {
+			con = pool.getConnection();
+			sql = "delete from user_mst where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return result;
+	}
 }
